@@ -35,16 +35,49 @@ class _CounterScreenState extends State<CounterScreen> {
             ],
             ),
           ),
-          //floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-          floatingActionButton: FloatingActionButton(
-            child: const Icon( Icons.add),
-            onPressed: () { 
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+          floatingActionButton: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,  //spaceAround
+            children: [
+              FloatingActionButton(
+                child: const Icon( Icons.exposure_plus_1_outlined),
+                onPressed: () { 
 
-              counter++; 
-              //notifica que hubo un cambio en el estado y debe redibujarse
-              setState(() { });
-             },
+                  counter++; 
+                  //notifica que hubo un cambio en el estado y debe redibujarse
+                  setState(() { });
+                 },
 
+              ),
+
+              const SizedBox( width: 20,),
+
+              FloatingActionButton(
+                child: const Icon( Icons.home ),
+                onPressed: () { 
+
+                  counter = 0; 
+                  //notifica que hubo un cambio en el estado y debe redibujarse
+                  setState(() { });
+                 },
+
+              ),
+
+              const SizedBox( width: 20,),
+
+              FloatingActionButton(
+                child: const Icon( Icons.exposure_minus_1_outlined),
+                onPressed: () { 
+
+                  counter--; 
+                  //notifica que hubo un cambio en el estado y debe redibujarse
+                  setState(() { });
+                 },
+
+              ),
+
+
+            ],
           ),
 
     );
