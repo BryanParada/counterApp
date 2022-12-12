@@ -14,6 +14,21 @@ class _CounterScreenState extends State<CounterScreen> {
 
   int counter = 10;
 
+  void increase(){
+    counter ++;
+    setState(() {});
+  }
+
+  void decrease(){
+    counter --;
+    setState(() {});
+  }
+
+    void reset(){
+    counter = 0;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -36,37 +51,49 @@ class _CounterScreenState extends State<CounterScreen> {
             ),
           ),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-          floatingActionButton: const CustomFloatingActions(),
+          floatingActionButton: CustomFloatingActions( 
+            increaseFn: increase,
+            decreaseFn: decrease,
+            resetFn   : reset ), //se envia como argumento, no como ejecucion
 
     );
   }
 }
 
 class CustomFloatingActions extends StatelessWidget {
+
+  final Function increaseFn;
+  final Function decreaseFn;
+  final Function resetFn;
+
+
   const CustomFloatingActions({
-    Key? key,
+    Key? key, 
+    required this.increaseFn,
+    required this.decreaseFn, 
+    required this.resetFn,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,  //spaceAround
-      children: const [
+      children:  [
         FloatingActionButton(
-          onPressed: null,
-          child: Icon( Icons.exposure_plus_1_outlined),
+          child: const Icon( Icons.exposure_plus_1_outlined),
+          onPressed: () => increaseFn(),
 
         ),
  
         FloatingActionButton(
-          onPressed: null,
-          child: Icon( Icons.home ),
+          child: const Icon( Icons.home ),
+          onPressed: () => resetFn(),
 
         ),
  
         FloatingActionButton(
-          onPressed: null,
-          child: Icon( Icons.exposure_minus_1_outlined),
+          child: const Icon( Icons.exposure_minus_1_outlined),
+          onPressed: () => decreaseFn(),
 
         ),
 
