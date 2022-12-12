@@ -1,14 +1,20 @@
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-        child: Text('Hello from Home_screen'),
-      );
+    return const Scaffold(
+      backgroundColor: Colors.green,
+      body:
+          Center(
+          child: Text('Hello from Home_screen'),
+        )
+
+    );
   }
 
 }
