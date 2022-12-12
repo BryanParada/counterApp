@@ -36,50 +36,42 @@ class _CounterScreenState extends State<CounterScreen> {
             ),
           ),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-          floatingActionButton: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,  //spaceAround
-            children: [
-              FloatingActionButton(
-                child: const Icon( Icons.exposure_plus_1_outlined),
-                onPressed: () { 
+          floatingActionButton: const CustomFloatingActions(),
 
-                  counter++; 
-                  //notifica que hubo un cambio en el estado y debe redibujarse
-                  setState(() { });
-                 },
+    );
+  }
+}
 
-              ),
+class CustomFloatingActions extends StatelessWidget {
+  const CustomFloatingActions({
+    Key? key,
+  }) : super(key: key);
 
-              const SizedBox( width: 20,),
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,  //spaceAround
+      children: const [
+        FloatingActionButton(
+          onPressed: null,
+          child: Icon( Icons.exposure_plus_1_outlined),
 
-              FloatingActionButton(
-                child: const Icon( Icons.home ),
-                onPressed: () { 
+        ),
+ 
+        FloatingActionButton(
+          onPressed: null,
+          child: Icon( Icons.home ),
 
-                  counter = 0; 
-                  //notifica que hubo un cambio en el estado y debe redibujarse
-                  setState(() { });
-                 },
+        ),
+ 
+        FloatingActionButton(
+          onPressed: null,
+          child: Icon( Icons.exposure_minus_1_outlined),
 
-              ),
-
-              const SizedBox( width: 20,),
-
-              FloatingActionButton(
-                child: const Icon( Icons.exposure_minus_1_outlined),
-                onPressed: () { 
-
-                  counter--; 
-                  //notifica que hubo un cambio en el estado y debe redibujarse
-                  setState(() { });
-                 },
-
-              ),
+        ),
 
 
-            ],
-          ),
-
+      ],
     );
   }
 }
